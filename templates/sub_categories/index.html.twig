@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SubCategories index{% endblock %}
+
+{% block body %}
+    <h1>SubCategories index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>imageobject</th>
+                <th>Objectname</th>
+                <th>Lost_address</th>
+                <th>Lost_codezip</th>
+                <th>Lost_city</th>
+                <th>Lost_date</th>
+                <th>Owner_secondname</th>
+                <th>Owner_firstname</th>
+                <th>Owner_address</th>
+                <th>Owner_codezip</th>
+                <th>Owner_city</th>
+                <th>Object_state</th>
+                <th>Object_mark</th>
+                <th>Object_model</th>
+                <th>Object_color</th>
+                <th>Object_material</th>
+                <th>Object_description</th>
+                <th>Object_clues</th>
+                <th>Created_at</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sub_category in sub_categories %}
+            <tr>
+                <td>{{ sub_category.id }}</td>
+                <td>{{ sub_category.imageobject }}</td>
+                <td>{{ sub_category.objectname }}</td>
+                <td>{{ sub_category.lostAddress }}</td>
+                <td>{{ sub_category.lostCodezip }}</td>
+                <td>{{ sub_category.lostCity }}</td>
+                <td>{{ sub_category.lostDate ? sub_category.lostDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sub_category.ownerSecondname }}</td>
+                <td>{{ sub_category.ownerFirstname }}</td>
+                <td>{{ sub_category.ownerAddress }}</td>
+                <td>{{ sub_category.ownerCodezip }}</td>
+                <td>{{ sub_category.ownerCity }}</td>
+                <td>{{ sub_category.objectState }}</td>
+                <td>{{ sub_category.objectMark }}</td>
+                <td>{{ sub_category.objectModel }}</td>
+                <td>{{ sub_category.objectColor }}</td>
+                <td>{{ sub_category.objectMaterial }}</td>
+                <td>{{ sub_category.objectDescription }}</td>
+                <td>{{ sub_category.objectClues }}</td>
+                <td>{{ sub_category.createdAt ? sub_category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sub_category.slug }}</td>
+                <td>
+                    <a href="{{ path('app_sub_categories_show', {'id': sub_category.id}) }}">show</a>
+                    <a href="{{ path('app_sub_categories_edit', {'id': sub_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="22">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sub_categories_new') }}">Create new</a>
+{% endblock %}

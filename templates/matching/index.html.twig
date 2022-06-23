@@ -1,0 +1,200 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block title %}Matching
+{% endblock %}
+
+
+{% block body %}
+
+
+	<div style="width: 80%;" class="row  mb-0 mt-5 ">
+
+
+
+		<div class="row container ">
+			
+
+
+		<section class="py-5">
+			<div class="container my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="col-lg-8 col-xl-6">
+						<div class="text-center">
+
+							<h2 class="fw-bolder">
+								Matching</h2>
+
+							<p class="lead fw-normal text-muted mb-5">ici vous trouvez les objets que les autres personnes ont perdus et c'est peut-être similaire à ce que vous avez fait vous avez trouvé , si c'est le cas contactez les en cliquant sur plus</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-5">
+					{% for article in objectsLostname %}
+
+
+						<div class="col-lg-4 mb-5">
+							<div class="card h-100 shadow border-0">
+
+								
+										<div class="card-body p-4">
+
+				{% for annonce in app.user.subcategories %}
+									{% if annonce.objectname == article.objectname  %}
+											<div class="badge bg-primary bg-gradient rounded-pill mb-2">
+												 75% à 
+												{{annonce.objectname}}</div>
+									{% endif %}
+
+									{% endfor %}
+											
+
+										
+									<h5 class="card-title mb-3">{{article.objectname}}</h5>
+									<h5>{{article.categories.name}}</h5>
+									<h6>{{article.categoriesdetails.name}}</h6>
+
+								</a>
+								<p class="card-text mb-0">{{article.objectdescription}}.</p>
+							</div>
+							<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+								<div class="d-flex align-items-end justify-content-between">
+									<div class="d-flex align-items-center mb-3">
+
+										<div class="small">
+
+											<div class="text-muted">{{article.createdat |format_datetime() }}
+												&middot;
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="">
+
+									<a class="btn btn-primary " href="{{ path('matching_object_details', { id: article.id}) }} ">plus</a>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+				{% endfor %}
+
+
+				
+					{% for article in objectsLostOthersByDetails %}
+
+						<div class="col-lg-4 mb-5">
+							<div class="card h-100 shadow border-0">
+							
+										<div class="card-body p-4">
+                                	{% for annonce in app.user.subcategories %}
+									{% if annonce.categories == article.categories  %}
+
+											<div class="badge bg-danger bg-gradient rounded-pill mb-2">
+											 50% à 
+												{{annonce.objectname}}
+
+
+											</div>
+
+										{% endif %}
+
+									{% endfor %}
+									<h5 class="card-title mb-3">{{article.objectname}}</h5>
+									<h5>{{article.categories.name}}</h5>
+									<h6>{{article.categoriesdetails.name}}</h6>
+
+								</a>
+								<p class="card-text mb-0">{{article.objectdescription}}.</p>
+							</div>
+							<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+								<div class="d-flex align-items-end justify-content-between">
+									<div class="d-flex align-items-center mb-3">
+
+										<div class="small">
+
+											<div class="text-muted">{{article.createdat |format_datetime() }}
+												&middot;
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="">
+
+									<a class="btn btn-primary " href="{{ path('matching_object_details', { id: article.id}) }} ">plus</a>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+				{% endfor %}
+
+				
+					{% for article in objectsLostOthersByCategories %}
+
+
+						<div class="col-lg-4 mb-5">
+							<div class="card h-100 shadow border-0">
+
+
+								<div class="card-body p-4">
+
+									{% for annonce in app.user.subcategories %}
+										{% if annonce.categories == article.categories  %}
+
+											<div class="badge bg-warning bg-gradient rounded-pill mb-2">
+											 25 % à 
+												{{annonce.objectname}}
+
+											</div>
+										{% endif %}
+
+									{% endfor %}
+
+
+									<h5 class="card-title mb-3">{{article.objectname}}</h5>
+									<h5>{{article.categories.name}}</h5>
+									<h6>{{article.categoriesdetails.name}}</h6>
+
+								</a>
+								<p class="card-text mb-0">{{article.objectdescription}}.</p>
+							</div>
+							<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+								<div class="d-flex align-items-end justify-content-between">
+									<div class="d-flex align-items-center mb-3">
+
+										<div class="small">
+
+											<div class="text-muted">{{article.createdat |format_datetime() }}
+												&middot;
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="">
+
+									<a class="btn btn-primary " href="{{ path('matching_object_details', { id: article.id}) }} ">plus</a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+				{% endfor %}
+
+			</div>
+		</section>
+	</div>
+</section>
+
+{% include "footer.html.twig" %}{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block title %}Vos objets Gtrouver{% endblock %}
+
+
+{% block body %}
+
+
+	<div class="col-lg-8 mb-5">
+
+		<div class="card h-100 shadow border-0">
+			<div class="row">
+				<h1 class="card-title m-3">{{subcategories.objectname}}</h1>
+
+				<div class="col-md-4">
+					{% if subcategories.imageobject == null %}
+						<img style="card-img-top" src="{{ asset('images/no-image-featured-image.png') }}" alt="">
+					{% else %}
+						<img class="card-img-top" src="{{ asset('uploads/object/'~ subcategories.imageobject) }}" alt="..."/>
+					{% endif %}
+				</div>
+				<div class="col-md-8">
+					<div class="card-body px-4">
+						{% if subcategories.lost == false %}
+							<h3>
+								Objet trouve</h3>
+						{% else %}
+							<h3>
+								Objet perdu</h3>
+						{% endif %}
+						<p>
+							<h5 class="m-0 p-0">Description:</h5>
+							{{subcategories.objectdescription}}</p>
+						<p>
+							<h5 class="m-0 p-0">Nom du propriétaire :</h5>
+							{{subcategories.ownerfirstname}}</p>
+						<p>
+							<h5 class="m-0 p-0">Adresse du propriétaire:</h5>
+							{{subcategories.owneraddress}}
+							,
+							{{subcategories.ownercity}}
+							{{subcategories.ownercodezip}}</p>
+						<p>
+							<h5 class="m-0 p-0">l'endroit où l'objet est perdu:</h5>
+							{{subcategories.objectclues}}</p>
+						<p>
+							<h5 class="m-0 p-0">Couleur :</h5>
+							{{subcategories.objectcolor}}</p>
+						<p>
+							<h5 class="m-0 p-0">Marque :</h5>
+							{{subcategories.objectmark}}</p>
+						<p>
+							<h5 class="m-0 p-0">Model :</h5>
+							{{subcategories.objectmodel}}</p>
+
+					</div>
+					<a class="btn btn-danger " href="{{path('app_user_profile_object')}}">back to list
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+				<div class="d-flex align-items-end justify-content-between">
+					<div class="d-flex align-items-center mb-3">
+
+						<div class="small">
+
+							<div class="text-muted">{{subcategories.createdat |format_datetime() }}
+								&middot;
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div></div>{% endblock %}

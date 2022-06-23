@@ -1,0 +1,134 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block title %}Users index
+{% endblock %}
+
+
+{% block body %}
+<section>
+	<div class="row container ">
+	<div class="col-md-10"></div>
+
+
+		<section class="py-2">
+			<div class="container px-5 my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="col-lg-8 col-xl-6">
+						<div class="text-center">
+							<h2 class="fw-bolder">
+								Vos Objet trouve</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-5">
+					{% for annonce in objectsFound %}
+					<div class="col-lg-4 mb-5">
+								<div class="card h-100 shadow border-0">
+									{% if annonce.imageobject == null %}
+
+										<img style="card-img-top px-2" src="{{ asset('images/no-image-featured-image.png')}}" alt="">
+									{% else %}
+										<img class="card-img-top" src="{{ asset('uploads/object/'~ annonce.imageobject)}}" alt="..."/>
+									{% endif %}
+									<div class="card-body p-4">
+										<div class="badge bg-primary bg-gradient rounded-pill mb-2">T</div>
+										
+											<h5 class="card-title mb-3">{{annonce.objectname}}</h5>
+											<h6>{{annonce.categories.name}}</h6>
+										</a>
+										<p class="card-text mb-0">{{annonce.objectdescription}}.</p>
+									</div>
+									<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+										<div class="d-flex align-items-end justify-content-between">
+											<div class="d-flex align-items-center mb-3">
+
+												<div class="small">
+
+													<div class="text-muted">{{annonce.createdat |format_datetime() }}
+														&middot;
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="">
+										
+										<a class="btn btn-primary mx-2" href="{{ path('user_object_details', { id: annonce.id}) }} ">more</a>
+										<a class="btn btn-danger mx-2" href="{{ path('app_object_delete', { id: annonce.id}) }} ">suprimer</a>
+										<a class="btn btn-warning  mx-2 " href="{{ path('app_object_edit', { id: annonce.id}) }} ">edit</a>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+					
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<section class="py-5">
+			<div class="container px-5 my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="col-lg-8 col-xl-6">
+						<div class="text-center">
+							<h2 class="fw-bolder">
+								vos Objet perdu</h2>
+
+						</div>
+					</div>
+				</div>
+				<div class="row gx-5">
+					{% for annonce in objectsLost %}
+						
+
+							<div class="col-lg-4 mb-5">
+								<div class="card h-100 shadow border-0">
+									{% if annonce.imageobject == null %}
+
+										<img style="card-img-top" src="{{ asset('images/no-image-featured-image.png') }}" alt="">
+									{% else %}
+										<img class="card-img-top" src="{{ asset('uploads/object/'~ annonce.imageobject) }}" alt="..."/>
+									{% endif %}
+									<div class="card-body p-4">
+										<div class="badge bg-primary bg-gradient rounded-pill mb-2">P</div>
+										
+											<h5 class="card-title mb-3">{{annonce.objectname}}</h5>
+											<h6>{{annonce.categories.name}}</h6>
+										</a>
+										<p class="card-text mb-0">{{annonce.objectdescription}}.</p>
+									</div>
+									<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+										<div class="d-flex align-items-end justify-content-between">
+											<div class="d-flex align-items-center ">
+
+												<div class="small  mb-3 ">
+
+													<div class="text-muted ">{{annonce.createdat |format_datetime() }}
+														&middot;
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<a class="btn btn-primary  mx-2" href="{{ path('user_object_details', { id: annonce.id}) }} ">more</a>
+										<a class="btn btn-danger  mx-2 " href="{{ path('app_object_delete', { id: annonce.id}) }} ">suprimer</a>
+										<a class="btn btn-warning  mx-2 " href="{{ path('app_object_edit', { id: annonce.id}) }} ">edit</a>
+
+									</div>
+								</div>
+							</div>
+
+
+					
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	</div>
+	{% include "footer.html.twig" %}
+	</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base2.html.twig' %}
+
+
+{% block title %}matching
+{% endblock %}
+
+
+{% block body %}
+
+
+			<div class="col-md-6 m-5 p-5 bg-white">
+				<h2 class='text-center'>{{subcategories.objectname}}
+				</h2>
+			
+				<p><h5 class="m-0 p-0">description:</h5>{{subcategories.objectdescription}}</p>
+				<p><h5 class="m-0 p-0">Nom du propriétaire :</h5>{{subcategories.ownerfirstname}}</p>
+				<p><h5 class="m-0 p-0">Adresse du propriétaire:</h5>{{subcategories.owneraddress}} , 	{{subcategories.ownercity}} {{subcategories.ownercodezip}}</p>
+				<p><h5 class="m-0 p-0">l'endroit où l'objet est perdu:</h5>{{subcategories.objectclues}}</p>
+				<p><h5 class="m-0 p-0">couleur :</h5>{{subcategories.objectcolor}}</p>
+				<p><h5 class="m-0 p-0">date:</h5>{{subcategories.lostdate|date('Y-m-d ') }}</p>
+					<a class="btn btn-primary " href="{{ path('app_messages_matching', { id: subcategories.users.id}) }} "> contactez la personne  </a>
+						 <a class ="btn btn-danger " href="{{path('app_matching_trouver')}}">retour à la liste </a>
+			</div>
+			
+
+		</div>
+	{% endblock %}
