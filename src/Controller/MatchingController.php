@@ -6,13 +6,10 @@ use App\Entity\Categories;
 use App\Entity\Users;
 use App\Entity\Messages;
 use App\Entity\SubCategories;
-use Doctrine\ORM\Query\Expr\From;
 use App\Form\MatchingMessagesType;
 use App\Repository\UsersRepository;
 use App\Repository\MessagesRepository;
-use App\Repository\CategoriesRepository;
 use App\Repository\SubCategoriesRepository;
-use Proxies\__CG__\App\Entity\Objects;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -81,10 +78,6 @@ class MatchingController extends AbstractController
         $array2 = $objectsdetailsLost;
         $categoriesnodetails = array_diff($array1, $array2);
 
-
-
-
-        //dd($categorienodetail);
         //////////////////////////////////////////////////////////////////////////
         //1- mettre les categories d objects de lutilisateur  dans un tableau 
 

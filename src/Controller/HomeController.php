@@ -2,10 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
-use App\Form\ContactType;
-use App\Repository\MessagesRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

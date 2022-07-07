@@ -11,8 +11,14 @@
 
      <h1 class=" text-center">Inscription</h1>
 
+
     {{ form_start(registrationForm) }}
       	{{ form_start(registrationForm) }}
+
+	{{ form_row(registrationForm.civilite, {
+            label: 'civilite'
+        }) }}
+
 			{{ form_row(registrationForm.secondname, {
             label: 'nom'
         }) }}

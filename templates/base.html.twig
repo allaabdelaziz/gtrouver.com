@@ -65,7 +65,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 	</head>
 	<body>
-		{% include "/navbar.html.twig" %}
+		{% include "partials/navbar.html.twig" %}
 		<div class="">
 			{% if app.user %}
 				{% if app.user.isVerified == false %}

@@ -3,10 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Users;
-use App\Entity\Messages;
-use App\Form\AdLostType;
-use App\Form\ContactType;
-use App\Entity\Categories;
 use App\Form\EditUserType;
 use App\Form\EditObjectType;
 use Doctrine\ORM\Mapping\Id;
@@ -14,9 +10,7 @@ use App\Entity\SubCategories;
 use App\Form\DeleteObjectType;
 use App\Repository\UsersRepository;
 use App\Form\ChangePasswordFormType;
-use App\Repository\MessagesRepository;
 use App\Repository\CategoriesRepository;
-use App\Repository\SubCategorieRepository;
 use App\Repository\SubCategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,13 +23,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[
     Route('/user'),
-
     IsGranted("ROLE_USER"),
 ]
 class UserProfileController extends AbstractController
 {
-
-    ////////////////////////////////////////////////////////
 
     #[Route('/newobject', name: 'app_annonce_adloser', methods: ['GET', 'POST'])]
     public function newobject(Request $request, SubCategoriesRepository  $subCategoriesRepository,CategoriesRepository $categoriesRepository, SluggerInterface $slugger): Response
@@ -121,8 +112,6 @@ class UserProfileController extends AbstractController
             $subCategory->setIsFound(false);
             $subCategory->setActive(true);
           
-
-
             $imageobjet = $form->get('imageobject')->getData();
             if ($imageobjet !== null) {
                 $originalFilename = pathinfo($imageobjet->getClientOriginalName(), PATHINFO_FILENAME);

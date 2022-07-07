@@ -130,42 +130,42 @@ class AdLostType extends AbstractType
 
 
 
-        $formModifier = function (FormInterface $form, Categories $category = null) {
-            $categoriesdetails = (null ===  $category) ? [] : $category->getCategoriesDetails();
-            $form->add('categoriesdetails', EntityType::class, [
-                'class' => CategoriesDetails::class,
-                'choices' => $categoriesdetails,
-                'choice_label' => "name",
+    //     $formModifier = function (FormInterface $form, Categories $category = null) {
+    //         $categoriesdetails = (null ===  $category) ? [] : $category->getCategoriesDetails();
+    //         $form->add('categoriesdetails', EntityType::class, [
+    //             'class' => CategoriesDetails::class,
+    //             'choices' => $categoriesdetails,
+    //             'choice_label' => "name",
 
-                'label' => "quoi excetemnt",
-                "placeholder" => "categorie detaills"
-            ]);
+    //             'label' => "quoi excetemnt",
+    //             "placeholder" => "categorie detaills"
+    //         ]);
 
-            dd($category);
-        };
+    //         dd($category);
+    //     };
 
-        $builder->get('categories')->addEventListener(
-            FormEvents::POST_SUBMIT,
-            function (FormEvent $event) use ($formModifier) {
-                $category = $event->getForm()->getData();
+    //     $builder->get('categories')->addEventListener(
+    //         FormEvents::POST_SUBMIT,
+    //         function (FormEvent $event) use ($formModifier) {
+    //             $category = $event->getForm()->getData();
 
-                $formModifier($event->getForm(), $category); {
-                    $form = $event->getForm();
-                    $form->getParent()->add('categoriesdetails', EntityType::class, [
-                        'class' => CategoriesDetails::class,
-                        'choice_label' => $form->getData()->getCategoriesDetails(),
-                        'mapped' => false,
-                        'label' => "quoi excetemnt",
-                        'query_builder' => function (CategoriesDetailsRepository $categoriesdetailsRepository) {
-                            return  $categoriesdetailsRepository->createQueryBuilder('categoriesdetails')
-                                ->orderBy('categoriesdetails.id', 'ASC');
-                        }
+    //             $formModifier($event->getForm(), $category); {
+    //                 $form = $event->getForm();
+    //                 $form->getParent()->add('categoriesdetails', EntityType::class, [
+    //                     'class' => CategoriesDetails::class,
+    //                     'choice_label' => $form->getData()->getCategoriesDetails(),
+    //                     'mapped' => false,
+    //                     'label' => "quoi excetemnt",
+    //                     'query_builder' => function (CategoriesDetailsRepository $categoriesdetailsRepository) {
+    //                         return  $categoriesdetailsRepository->createQueryBuilder('categoriesdetails')
+    //                             ->orderBy('categoriesdetails.id', 'ASC');
+    //                     }
 
-                    ]);
-                }
-            }
-        );;
-    }
+    //                 ]);
+    //             }
+    //         }
+    //     );;
+     }
 
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Messages;
-use App\Form\ContactType;
 use App\Form\MessagesType;
 use App\Repository\MessagesRepository;
 use Symfony\Component\HttpFoundation\Request;
