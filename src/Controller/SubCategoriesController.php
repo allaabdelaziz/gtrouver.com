@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
@@ -47,7 +46,7 @@ class SubCategoriesController extends AbstractController
             $imageobjet = $form->get('imageobject')->getData();
             if ($imageobjet) {
                 $originalFilename = pathinfo($imageobjet->getClientOriginalName(), PATHINFO_FILENAME);
-               
+
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageobjet->guessExtension();
 

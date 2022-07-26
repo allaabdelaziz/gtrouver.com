@@ -24,8 +24,10 @@ class MessagesController extends AbstractController
     public function indexrecu(MessagesRepository $messagesRepository): Response
     {
         return $this->render('messages/messageRecu.html.twig', [
-            'messages' => $messagesRepository->findby( array(), 
-            array('created_at' => 'ASC')),
+            'messages' => $messagesRepository->findby(
+                array(),
+                array('created_at' => 'ASC')
+            ),
         ]);
     }
 
@@ -33,8 +35,10 @@ class MessagesController extends AbstractController
     public function indexenvoi(MessagesRepository $messagesRepository): Response
     {
         return $this->render('messages/messageEnvo.html.twig', [
-            'messages' => $messagesRepository->findby( array(), 
-            array('title' => 'ASC')),
+            'messages' => $messagesRepository->findby(
+                array(),
+                array('title' => 'ASC')
+            ),
         ]);
     }
     #[Route('/new', name: 'app_messages_new', methods: ['GET', 'POST'])]
@@ -58,8 +62,9 @@ class MessagesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_messages_show', methods: ['GET'])]
-    public function show(Messages $message ,  MessagesRepository $messagesRepository): Response
-    {  $message->setisread(true);
+    public function show(Messages $message,  MessagesRepository $messagesRepository): Response
+    {
+        $message->setisread(true);
         $messagesRepository->add($message);
         return $this->render('messages/show.html.twig', [
             'message' => $message,
@@ -86,14 +91,10 @@ class MessagesController extends AbstractController
     #[Route('/delete/{id}', name: 'app_messages_delete', methods: ['POST'])]
     public function delete(Request $request, Messages $message, MessagesRepository $messagesRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$message->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $message->getId(), $request->request->get('_token'))) {
             $messagesRepository->remove($message);
         }
 
         return $this->redirectToRoute('app_messages_envoyes', [], Response::HTTP_SEE_OTHER);
     }
-
-
-   
-    
 }

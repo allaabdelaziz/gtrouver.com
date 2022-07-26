@@ -28,13 +28,4 @@ class HomeController extends AbstractController
 
         return $this->render('home/confidentialite.html.twig', []);
     }
-
-
-
-
-
-
-
-
-    
 }

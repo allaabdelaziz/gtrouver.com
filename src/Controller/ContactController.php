@@ -13,24 +13,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request , ContactRepository $contactRepository): Response
+    public function index(Request $request, ContactRepository $contactRepository): Response
     {
-        
-                $contact = new Contact();
-                $form = $this->createForm(ContactType::class, $contact);
-                $form->handleRequest($request);
-       
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $this->addFlash('success', 'Votre message a etait bien envoye');
-                   
-                    $contactRepository->add($contact);
-                    return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
-                }
-        
-        
+
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Votre message a etait bien envoye');
+
+            $contactRepository->add($contact);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        }
+
+
         return $this->render('contact/index.html.twig', [
             'contact' => $contact,
-          'form' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 }

@@ -30,23 +30,22 @@ class UserProfileController extends AbstractController
 {
 
     #[Route('/newobject', name: 'app_annonce_adloser', methods: ['GET', 'POST'])]
-    public function newobject(Request $request, SubCategoriesRepository  $subCategoriesRepository,CategoriesRepository $categoriesRepository, SluggerInterface $slugger): Response
+    public function newobject(Request $request, SubCategoriesRepository  $subCategoriesRepository, CategoriesRepository $categoriesRepository, SluggerInterface $slugger): Response
     {
-       
-        $subCategory = new SubCategories();
-        ;
-        $form = $this->createForm(AdLostType::class, $subCategory );
-        
+
+        $subCategory = new SubCategories();;
+        $form = $this->createForm(AdLostType::class, $subCategory);
+
         $form->handleRequest($request);
         // dd( $form); 
 
         if ($form->isSubmitted() && $form->isValid()) {
-           
+
             $this->addFlash('success', 'vous avez ajouter un new object');
             $subCategory->setUsers($this->getUser());
             $subCategory->setIsFound(false);
             $subCategory->setActive(true);
-            
+
             $imageobjet = $form->get('imageobject')->getData();
             if ($imageobjet) {
                 $originalFilename = pathinfo($imageobjet->getClientOriginalName(), PATHINFO_FILENAME);
@@ -67,9 +66,8 @@ class UserProfileController extends AbstractController
         return $this->renderForm('annonce/adloser.html.twig', [
             'sub_category' => $subCategory,
             'form' => $form,
-            'categories'=>$categoriesRepository->findAll(),
+            'categories' => $categoriesRepository->findAll(),
         ]);
-      
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,12 +75,12 @@ class UserProfileController extends AbstractController
     #[Route('/profile/object', name: 'app_user_profile_object')]
     public function userObject(UsersRepository $usersRepository, SubCategoriesRepository $subCategorieRepository): Response
     {
-        $findObjects= $subCategorieRepository->findByUser( $this->getUser());
-        $lostObjects= $subCategorieRepository->lostByUser( $this->getUser());
+        $findObjects = $subCategorieRepository->findByUser($this->getUser());
+        $lostObjects = $subCategorieRepository->lostByUser($this->getUser());
         return $this->render('user_profile/profileobject.html.twig', [
             'users' => $usersRepository->findAll(),
-                'objectsFound' =>  $findObjects,
-                'objectsLost' =>  $lostObjects,
+            'objectsFound' =>  $findObjects,
+            'objectsLost' =>  $lostObjects,
         ]);
     }
 
@@ -112,7 +110,7 @@ class UserProfileController extends AbstractController
             $subCategory->setUsers($this->getUser());
             $subCategory->setIsFound(false);
             $subCategory->setActive(true);
-          
+
             $imageobjet = $form->get('imageobject')->getData();
             if ($imageobjet !== null) {
                 $originalFilename = pathinfo($imageobjet->getClientOriginalName(), PATHINFO_FILENAME);
@@ -128,7 +126,7 @@ class UserProfileController extends AbstractController
                 $subCategory->setImageobject($newFilename);
             }
             $subCategoriesRepository->add($subCategory);
-         
+
 
             return $this->redirectToRoute('app_user_profile_object', [], Response::HTTP_SEE_OTHER);
         }
@@ -137,7 +135,7 @@ class UserProfileController extends AbstractController
             'form' => $form,
         ]);
     }
- //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     #[Route('/object/delete/{id}', name: 'app_object_delete', methods: ['GET', 'POST'])]
@@ -149,12 +147,12 @@ class UserProfileController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $subCategory->setUsers($this->getUser());
-       
-        $subCategoriesRepository->add($subCategory);
-    
 
-        return $this->redirectToRoute('app_user_profile_object', [], Response::HTTP_SEE_OTHER);
-    }
+            $subCategoriesRepository->add($subCategory);
+
+
+            return $this->redirectToRoute('app_user_profile_object', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->renderForm('annonce/adloserdelete.html.twig', [
             'sub_category' => $subCategory,
             'form' => $form,
@@ -163,7 +161,7 @@ class UserProfileController extends AbstractController
 
 
 
- //////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     #[Route('/profil', name: 'app_user_profile')]
@@ -177,14 +175,14 @@ class UserProfileController extends AbstractController
     #[Route(' profil/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function editprofile(Request $request,  UsersRepository $usersRepository): Response
     {
-    $user = $this->getUser();
+        $user = $this->getUser();
 
         $form = $this->createForm(EditUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->add($user);
-            
+
             return $this->redirectToRoute('app_user_profile', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -219,6 +217,4 @@ class UserProfileController extends AbstractController
             'resetForm' => $form->createView(),
         ]);
     }
-
-  
 }
