@@ -45,36 +45,7 @@
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
   }
-  /* .bg-login {
-			
-    background-image: url("/images/logo/gtrouver-logo-8mm.png");
-    background-position-y: 750px;
-  
-    opacity: 0.90;
-    
-    
-  } */
-  
-  
-  /* .bg-register {
-			
-    background-image: url("/images/registerbg.png");
-    background-position: center;
-    height: 900px;
 
-    opacity: 0.80;
-    box-shadow: 2px 2px 5px 2px rgb(124, 123, 123);
-    border-radius: 20px;
-     
-    
-  }
-   */
-
-
-
-
-  
-  
  .bg-log{
  background-color: rgba(255, 255, 255, 0.842);
   box-shadow: 2px 2px 5px 2px rgb(124, 123, 123);
@@ -118,17 +89,7 @@ background-size: cover;
                  0 0 20px rgba(255, 255, 255, 0.447),
                  0 0 40px rgba(255, 254, 254, 0.447),
   }
-  /*made with ❤, by qpi65*/
-  
 
-/*-----------------------------------------*/
-
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
  
 html {
   font-family: sans-serif;

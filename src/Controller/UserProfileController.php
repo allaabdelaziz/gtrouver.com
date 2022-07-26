@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\AdLostType;
 use App\Form\EditUserType;
 use App\Form\EditObjectType;
 use Doctrine\ORM\Mapping\Id;
@@ -165,7 +166,7 @@ class UserProfileController extends AbstractController
  //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    #[Route('/profile', name: 'app_user_profile')]
+    #[Route('/profil', name: 'app_user_profile')]
     public function profile(UsersRepository $usersRepository): Response
     {
         return $this->render('user_profile/userprofile.html.twig', [
@@ -173,16 +174,17 @@ class UserProfileController extends AbstractController
         ]);
     }
 
-    #[Route(' profile/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function editprofile(Request $request, Users $user, UsersRepository $usersRepository): Response
+    #[Route(' profil/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    public function editprofile(Request $request,  UsersRepository $usersRepository): Response
     {
-
+    $user = $this->getUser();
 
         $form = $this->createForm(EditUserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $usersRepository->add($user);
+            
             return $this->redirectToRoute('app_user_profile', [], Response::HTTP_SEE_OTHER);
         }
 

@@ -1,17 +1,18 @@
 
 
-//  sidebarCollapse
 
-(function ($) {	"use strict";
+(function ($) {
+	"use strict";
 
 	var fullHeight = function () {
 		$('.js-fullheight').css('height', $(window).height());
 		$(window).resize(function () {
-		$('.js-fullheight').css('height', $(window).height());
-		});	};
+			$('.js-fullheight').css('height', $(window).height());
+		});
+	};
 	fullHeight();
 	$('#sidebarCollapse').on('click', function () {
-	$('#sidebar').toggleClass('active');
+		$('#sidebar').toggleClass('active');
 	});
 
 })(jQuery);
@@ -43,7 +44,7 @@ function toggleText() {
 		}
 	})
 }
- // categories et sous categories 
+// categories et sous categories 
 
 
 Categoriesanddetails(0, 0, 1)
@@ -59,45 +60,45 @@ Categoriesanddetails(8, 23, 30)
 
 function Categoriesanddetails(ev, Nmin, Nmax) {
 
-var options = document.querySelector('#ad_lost_categoriesdetails').options;
-for (let i = 0; i < options.length; i++) {
-options[i].style.display = 'none';
-}
+	var options = document.querySelector('#ad_lost_categoriesdetails').options;
+	for (let i = 0; i < options.length; i++) {
+		options[i].style.display = 'none';
+	}
 
-document.querySelector('#ad_lost_categoriesdetails').style.display = 'none';
-options[0].style.display = 'none';
-const categories = document.querySelector("#ad_lost_categories");
-categories.addEventListener("change", function () {
+	document.querySelector('#ad_lost_categoriesdetails').style.display = 'none';
+	options[0].style.display = 'none';
+	const categories = document.querySelector("#ad_lost_categories");
+	categories.addEventListener("change", function () {
 
-let category = categories.value;
-console.log('categories' + category);
+		let category = categories.value;
+		console.log('categories' + category);
 
-if (category == ev) {
-	
+		if (category == ev) {
 
-document.querySelector('#ad_lost_categoriesdetails').style.display = 'block';
-for (let i = Nmin; i < Nmax; i++) {
-document.querySelector('#ad_lost_categoriesdetails').options[Nmin].selected = "true"
-document.querySelector('#ad_lost_categoriesdetails').options[i].style.display = 'block';
-}
-} else {
-for (let i = Nmin; i < Nmax; i++) {
-document.querySelector('#ad_lost_categoriesdetails').options[i].style.display = 'none';
-}
-};
-});
+
+			document.querySelector('#ad_lost_categoriesdetails').style.display = 'block';
+			for (let i = Nmin; i < Nmax; i++) {
+				document.querySelector('#ad_lost_categoriesdetails').options[Nmin].selected = "true"
+				document.querySelector('#ad_lost_categoriesdetails').options[i].style.display = 'block';
+			}
+		} else {
+			for (let i = Nmin; i < Nmax; i++) {
+				document.querySelector('#ad_lost_categoriesdetails').options[i].style.display = 'none';
+			}
+		};
+	});
 }
 
 
 const categoriesdetails = document.querySelector("#ad_lost_categoriesdetails");
 
 categoriesdetails.addEventListener("change", function () {
-let categorydetail = categoriesdetails.value;
-console.log('categoriesdetails' + categorydetail);
+	let categorydetail = categoriesdetails.value;
+	console.log('categoriesdetails' + categorydetail);
 
 
 });
 
-window.addEventListener("cookieAlertAccept", function() {
-    alert("cookies accepted")
+window.addEventListener("cookieAlertAccept", function () {
+	alert("cookies accepted")
 })

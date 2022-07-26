@@ -4,14 +4,14 @@
 
 		<meta charset="utf-8">
 		<title>
-			{% block title %}
-			{% endblock %}
+			{% block title %}{% endblock %}
 		</title>
 		<link rel="icon" href="{{ asset('images/logo/g-logo-05mm.png') }}">
 		<meta name="description" content="{% block meta_description %}site met en relation les personnes qui ont perdu un objet (les Perdants) et celles qui l'ont trouvé (les Inventeurs). Les visiteurs déclarent leur objet perdu ou trouvé via un formulaire disponible, accessible 24h/24 et 7jours/7.{% endblock %}">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1">
 		<!-- styles -->
-		<link rel="stylesheet" href="/css/bootstrap.css"> 
+		<link rel="stylesheet" href="/css/bootstrap.css">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -30,12 +30,12 @@
 			</div>
 			<div class="p-4">
 				<h1>
-					<a href="{{path('app_home')}}" class="logo"><img  class="w-75" src="{{ asset('images/logo/logo-blnacetnoire.png') }}" alt="" srcset=""></a>
+					<a href="{{path('app_home')}}" class="logo"><img class="w-75" src="{{ asset('images/logo/logo-blnacetnoire.png') }}" alt="" srcset=""></a>
 				</h1>
 				<ul class="list-unstyled components mb-5">
 					<li class="active">
 
-						<a  href="{{path('app_annonce_adloser')}}">Declarer un  object 
+						<a href="{{path('app_annonce_adloser')}}">Declarer un  object
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewbox="0 0 16 16">
 								<path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
 								<path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
@@ -43,62 +43,85 @@
 						</a>
 					</li>
 					<li>
-							<a  href="{{path('app_user_profile')}}"class="anim"><span class="fa fa-user mr-3"></span> <span>profile</span></a>
+						<a href="{{path('app_user_profile')}}" class="anim">
+							<span class="fa fa-user mr-3"></span>
+							<span>profile</span>
+						</a>
 					</li>
 					<li>
-						<a href="{{path('app_user_profile_object')}}" class="anim"><span class="fa fa-briefcase mr-3"></span><span>object</span></a>
+						<a href="{{path('app_user_profile_object')}}" class="anim">
+							<span class="fa fa-briefcase mr-3"></span>
+							<span>object</span>
+						</a>
 					</li>
 					<li>
-						<a href="{{path('app_matching_trouver')}}"class="anim"><span class="fa fa-sticky-note mr-3" ></span><span>	matching</span></a>
+						<a href="{{path('app_matching_trouver')}}" class="anim">
+							<span class="fa fa-sticky-note mr-3"></span>
+							<span>
+								matching</span>
+						</a>
 					</li>
 
 					<li>
 						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-							<span class="fa fa-paper-plane mr-3"></span><span>messages</span></a>
+							<span class="fa fa-paper-plane mr-3"></span>
+							<span>messages</span>
+						</a>
 					</li>
 
 					<ul class="collapse list-unstyled" id="pageSubmenu">
 						<li>
-							<a href="{{path('app_messages_envoyes')}}" class="anim"><span></span><span> Messages Envoyés</span></a>
+							<a href="{{path('app_messages_envoyes')}}" class="anim">
+								<span></span>
+								<span>
+									Messages Envoyés</span>
+							</a>
 						</li>
 						<li>
 							<a href="{{path('app_messages_recu')}}" class="anim">
-							<span></span><span>	Messages Recus</span></a>
+								<span></span>
+								<span>
+									Messages Recus</span>
+							</a>
 						</li>
-					
+
 					</ul>
-						<li class=>
+					<li class=>
 						<a href="{{path('app_contact')}}" class="anim">
-							<span class="fa fa-home mr-3"></span><span>
-							contact</span></a>
+							<span class="fa fa-home mr-3"></span>
+							<span>
+								contact</span>
+						</a>
 					</li>
 
-						<li class=>
+					<li class=>
 						<a href="{{path('app_logout')}}" class="anim">
-							<span class="fa fa-sign-out mr-3"></span><span>
-							Me Déconnecter</span></a>
+							<span class="fa fa-sign-out mr-3"></span>
+							<span>
+								Me Déconnecter</span>
+						</a>
 					</li>
 				</ul>
 
 				<div>
-				<p >Suivez-Nous :</p>
-			<a href="#" class="me-4  anim text-reset">
-				<i class="fab fa-facebook-f"></i>
-			</a>
-			<a href="#" class="me-4  anim text-reset">
-				<i class="fab fa-twitter"></i>
-			</a>
-			<a href="#" class="me-4  anim text-reset">
-				<i class="fab fa-google"></i>
-			</a>
-			<a href="#" class="me-4  anim text-reset">
-				<i class="fab fa-instagram"></i>
-			</a>
-			<a href="#" class="me-4  anim text-reset">
-				<i class="fab fa-linkedin"></i>
-			</a>
-		
-		</div>
+					<p>Suivez-Nous :</p>
+					<a href="#" class="me-4  anim text-reset">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a href="#" class="me-4  anim text-reset">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a href="#" class="me-4  anim text-reset">
+						<i class="fab fa-google"></i>
+					</a>
+					<a href="#" class="me-4  anim text-reset">
+						<i class="fab fa-instagram"></i>
+					</a>
+					<a href="#" class="me-4  anim text-reset">
+						<i class="fab fa-linkedin"></i>
+					</a>
+
+				</div>
 				<div class="footer"></div>
 
 			</div>
@@ -108,8 +131,16 @@
 		<div id="content" class=" container-fluid d-flex justify-content-center mt-4"> {% block body %}{% endblock body  %}
 
 
-			</div>
+			</div><!-- js -->{% block javascripts %}
+				<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
+				<script src="{{ asset('js/jquery.min.js') }}"></script>
+				<script src="{{ asset('js/popper.js') }}"></script>
+				<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+				<script src="{{ asset('js/main.js') }}"></script>
+			{% endblock %}
 		</div>
-
-	</html>
-</html></html></div><!-- js -->{% block javascripts %}<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script><script src="{{ asset('js/jquery.min.js') }}"></script><script src="{{ asset('js/popper.js') }}"></script><script src="{{ asset('js/bootstrap.min.js') }}"></script><script src="{{ asset('js/main.js') }}"></script>{% endblock %}</body></html>
+	
+	</div>
+	
+	</body>
+</html>
