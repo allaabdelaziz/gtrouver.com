@@ -16,38 +16,38 @@
       	{{ form_start(registrationForm) }}
 
 	{{ form_row(registrationForm.civilite, {
-            label: 'civilite'
+            label: 'Civilite'
         }) }}
 
 			{{ form_row(registrationForm.secondname, {
-            label: 'nom'
+            label: 'Nom'
         }) }}
 			{{ form_row(registrationForm.firstname, {
-            label: 'prenom'
+            label: 'Prenom'
         }) }}
 			<div class="row">
 				<div class="col-md-6">
 					{{ form_row(registrationForm.address, {
-            label: 'adresse'
+            label: 'Adresse'
         }) }}</div>
 				<div class="col-md-6">
 					{{ form_row(registrationForm.zipcode, {
-            label: 'code postale'
+            label: 'Code postale'
         }) }}</div>
 			</div>
 
 
 			{{ form_row(registrationForm.city, {
-            label: 'ville'
+            label: 'Ville'
         }) }}
 			{{ form_row(registrationForm.phone, {
-            label: 'telephone'
+            label: 'Telephone'
         }) }}
 			{{ form_row(registrationForm.email, {
-            label: 'email'
+            label: 'Email'
         }) }}
 			{{ form_row(registrationForm.plainPassword, {
-            label: 'mot de passe'
+            label: 'Mot de passe'
             
         }) }}
         <input type="checkbox" required>J'ai lu et j'accepte les <a href="{{path('app_conditions')}}"> conditions d'utilisation </a> ainsi que   <a href="{{path('app_confidentialite')}}"> la politique de confidentialité  </a>

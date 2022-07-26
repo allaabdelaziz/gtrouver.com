@@ -1,17 +1,17 @@
 {% extends 'partials/navbar2.html.twig' %}
 
-{% block title %}Reset your password
+{% block title %}réinitialisez votre mot de passe
 {% endblock %}
 
 {% block body %}
 	<div class="row m-5 p-5">
 		<div class="col">
-			<h1>Reset your password</h1>
+			<h1>réinitialisez votre mot de passe</h1>
 
 			{{ form_start(resetForm) }}
 			{{ form_row(resetForm.plainPassword) }}
-			<button class="btn btn-primary">Reset password</button>
-			<a class="btn btn-primary" href="{{path('app_home')}}">backhome</a>
+			<button class="btn btn-primary">réinitialisez mot de passe</button>
+			<a class="btn btn-danger" href="{{path('app_home')}}">Annuler</a>
 			{{ form_end(resetForm) }}</div>
 	</div>
 

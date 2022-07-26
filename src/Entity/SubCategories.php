@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Trait\SlugTrait;
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\SubCategoriesRepository;
@@ -13,7 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class SubCategories
 {
     use CreatedAtTrait;
-    use SlugTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]

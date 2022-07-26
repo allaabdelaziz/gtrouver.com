@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        $user->setRoles(['ROLE_USER']);
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -55,9 +55,9 @@ class RegistrationController extends AbstractController
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
-                    ->from(new Address('contact@alla-abdelaziz.com', 'gtrouve'))
+                    ->from(new Address('contact@alla-abdelaziz.com', 'gtrouver'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('E-mail de confirmation Gtrouver')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
@@ -99,7 +99,7 @@ class RegistrationController extends AbstractController
         }
 
 
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Votre adresse e-mail a été vérifiée.');
 
         return $this->redirectToRoute('app_user_home');
     }

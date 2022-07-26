@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Trait\SlugTrait;
+
 use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAtTrait;
-    use SlugTrait;
+ 
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]

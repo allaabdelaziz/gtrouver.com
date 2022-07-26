@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
 {
-    use SlugTrait;
+
     use CreatedAtTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]

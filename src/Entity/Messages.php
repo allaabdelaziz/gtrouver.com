@@ -10,7 +10,6 @@ use App\Repository\MessagesRepository;
 #[ORM\Entity(repositoryClass: MessagesRepository::class)]
 class Messages
 {
-    use SlugTrait;
     use CreatedAtTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]

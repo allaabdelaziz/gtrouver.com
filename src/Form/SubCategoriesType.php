@@ -76,7 +76,6 @@ class SubCategoriesType extends AbstractType
             ->add('object_description')
             ->add('object_clues')
             ->add('created_at')
-            ->add('slug')
             
             ;
     }
